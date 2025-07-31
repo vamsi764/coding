@@ -1,0 +1,46 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class Main {
+    static class Pair
+    {
+        int val;
+        int row;
+        int col;
+        public Pair(int val,int row,int col)
+        {
+            this.val=val;
+            this.row=row;
+            this.col=col;
+        }
+    }
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        int[][] arr= {
+    {1, 4, 7},
+    {2, 5, 8},
+    {3, 6, 9}
+};
+    // Queue<Integer> q=new LinkedList<>();
+    ArrayList<Integer> result=new ArrayList<>();
+    PriorityQueue<Pair> map=new PriorityQueue<>(Comparator.comparingInt(a->a.val));
+    for(int i=0;i<arr.length;i++)
+    {
+        if(arr[i].length>0)
+        {
+            map.add(new Pair(arr[i][0],i,0));
+        }
+    }
+    while(!map.isEmpty())
+    {
+        Pair curr=map.poll();
+        result.add(curr.val);
+        int nextcol=curr.col+1;
+        if(nextcol<arr[curr.row].length)
+        {
+            map.add(new Pair(arr[curr.row][nextcol],curr.row,nextcol));
+        }
+    }
+    System.out.println(result);
+    }
+}
