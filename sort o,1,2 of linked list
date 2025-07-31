@@ -1,0 +1,63 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Main {
+    static class Node
+    {
+        int data;
+        Node next;
+        Node(int value)
+        {
+            data=value;
+            next=null;
+        }
+    }
+    public static Node sort(Node root)
+    {
+        Node zeroDummy=new Node(0);
+        Node oneDummy=new Node(0);
+        Node twoDummy=new Node(0);
+        Node zero=zeroDummy,one=oneDummy,two=twoDummy;
+        Node temp=root;
+        while(temp!=null)
+        {
+            if(temp.data==0)
+            {
+                zero.next=new Node(0);
+                zero=zero.next;
+            }
+            else if(temp.data==1)
+            {
+                one.next=new Node(1);
+                one=one.next;
+            }
+            else
+            {
+                two.next=new Node(2);
+                two=two.next;
+            }
+            temp=temp.next;
+        }
+        zero.next=oneDummy.next!=null?oneDummy.next:twoDummy.next;
+        one.next=twoDummy.next;
+        two.next=null;
+        return zeroDummy.next;
+    }
+    public static void printlist(Node root)
+    {
+        while(root!=null)
+        {
+            System.out.println(root.data);
+            root=root.next;
+        }
+    }
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        Node root=new Node(1);
+        root.next=new Node(0);
+        root.next.next=new Node(1);
+        printlist(root);
+        Node sorted=sort(root);
+        printlist(sorted);
+    }
+}
