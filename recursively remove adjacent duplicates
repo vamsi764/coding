@@ -1,0 +1,29 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        StringBuilder stack=new StringBuilder();
+        String str="azxxzy";
+        for(char ch:str.toCharArray())
+        {
+            if(stack.isEmpty())
+            {
+                stack.append(ch);
+            }
+            else
+            {
+                if(ch==stack.charAt(stack.length()-1))
+                {
+                    stack.deleteCharAt(stack.length()-1);
+                }
+                else
+                {
+                    stack.append(ch);
+                }
+            }
+        }
+        System.out.println(stack.toString());
+    }
+}
