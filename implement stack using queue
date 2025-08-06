@@ -1,0 +1,30 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class Main {
+    static class Stack
+    {
+        Queue<Integer> q=new LinkedList<>();
+        void push(int val)
+        {
+            q.offer(val);
+            for(int i=0;i<q.size()-1;i++)
+            {
+                q.offer(q.poll());
+            }
+        }
+        int poll()
+        
+        {
+            if(q.isEmpty()) return -1;
+            return q.poll();
+        }
+    }
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        Stack s=new Stack();
+        s.push(1);
+        s.push(2);
+        System.out.println(s.poll());
+    }
+}
